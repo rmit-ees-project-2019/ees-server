@@ -5,9 +5,14 @@ var cors = require('cors')
 import {loadAllTiles, getTile} from './tilesaggr'
 import { PHOENIX_DIR, loadAllFires} from './phoenixaggr'
 
-const CosmosClient = require("@azure/cosmos").CosmosClient;
-const config = require("../config");
+ const CosmosClient = require("@azure/cosmos").CosmosClient;
+ const config = require("../config");
+ const TestList = require("./controllers/testList");
+ const Test = require("./models/test");
+
 const path = require("path");
+ // const logger = require("morgan");
+// const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
 /**
@@ -57,6 +62,35 @@ function startServer(port) {
     var app = express();
     app.use(cors());
     app.listen(port, resolve(app));
+
+    const cosmosClient = new CosmosClient({
+      endpoint: config.host,
+      auth: {
+        masterKey: config.authKey
+      }
+    });
+
+    const test = new Test(
+      cosmosClient,
+      config.databaseId,
+      config.containerId
+    );
+
+    const testList = new TestList(test);
+
+    test
+      .init(err => {
+        console.error(err);
+      })
+      .catch(err => {
+        console.error(err);
+        console.error(
+          "Shutting down because there was an error setting up the database."
+        );
+        process.exit(1);
+      });
+
+    app.get("/showTest", (req, res, next) => testList.showTest(req, res).catch(next));
   });
 }
 

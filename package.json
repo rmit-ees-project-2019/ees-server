@@ -51,7 +51,8 @@
     "express": "^4.16.3",
     "global-mercator": "^3.0.3",
     "node": "^11.12.0",
-    "node-pre-gyp": "^0.12.0"
+    "node-pre-gyp": "^0.12.0",
+    "request": "^2.88.0"
   },
   "now": {
     "public": true,
