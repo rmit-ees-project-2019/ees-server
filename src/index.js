@@ -5,6 +5,11 @@ var cors = require('cors')
 import {loadAllTiles, getTile} from './tilesaggr'
 import { PHOENIX_DIR, loadAllFires} from './phoenixaggr'
 
+const CosmosClient = require("@azure/cosmos").CosmosClient;
+const config = require("../config");
+const path = require("path");
+const bodyParser = require("body-parser");
+
 /**
  * MATSim Networks
  */
@@ -113,7 +118,6 @@ async function main3() {
   server.get('*', function(req, res){
     res.send('what???', 404);
   });
-
 }
 
 main3();
