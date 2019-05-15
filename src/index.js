@@ -16,40 +16,21 @@ var tiledict = {};
 // Shape name: mount_alexander_shire_networkP
 tiledict["mount_alexander_shire_network"] = {
   region: "mount-alexander-shire",
-  download: "https://cloudstor.aarnet.edu.au/plus/s/oh23zw4a0Vy4PNQ/download"
+  download: "mbtiles/mount_alexander_shire_network.mbtiles"
 }
 // Shape name: surf_coast_shire_networkP
 tiledict["surf_coast_shire_network"] = {
   region: "surf-coast-shire",
-  download: "https://cloudstor.aarnet.edu.au/plus/s/JK7STxWGKI2jNe4/download"
+  download: "mbtiles/surf_coast_shire_network.mbtiles"
 }
 
 /**
  * Phoenix Fires
  */
 var phoenixdict = {};
-phoenixdict["20181109_mountalex_evac_ffdi50a_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi50a_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi50b_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi50b_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi50c_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi50c_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi50d_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi50d_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi75a_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi75a_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi75b_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi75b_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi75c_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi75c_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi75d_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi75d_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi100b_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi100b_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi100c_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi100c_grid.shp.json"
-phoenixdict["20181109_mountalex_evac_ffdi100d_grid.shp.json"] =
-  "https://cloudstor.aarnet.edu.au/plus/s/W0lk21g3Ry9Wnqs/download?path=%2Fphoenix%2Fmount-alexander-shire&files=20181109_mountalex_evac_ffdi100d_grid.shp.json"
+fs.readdirSync('phoenix/').forEach(file => {
+  phoenixdict[file] = file
+});
 
 function startServer(port) {
   return new Promise(function (resolve, reject) {
